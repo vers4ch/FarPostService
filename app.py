@@ -6,7 +6,8 @@ app.config['SECRET_KEY'] = '314'
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
-    return render_template('index.html')
+    return render_template('login.html')
+
 
 # Запуск приложения
 if __name__ == '__main__':

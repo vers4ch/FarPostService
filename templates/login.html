@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система авторизации</title>
+    <link rel="stylesheet" href="static/styles/main.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- <i class="fa fa-camera-retro"></i> fa-camera-retro -->
+
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("login-password");
+            var eyeIcon = document.querySelector(".toggle-password i");
+    
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                // eyeIcon.classList.remove("fa-eye");
+                // eyeIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                // eyeIcon.classList.remove("fa-eye-slash");
+                // eyeIcon.classList.add("fa-eye");
+            }
+        }
+    </script>
+
+    <div class="main">
+        <div class="kugesanudsav">
+            <div class="logo">Авторизация</div>
+            <div class="kugesada-szetunomon">
+                <form action="" method="post" class="kugesamopag kugesamopag-login">
+                    <div class="kugesamopag-field">
+                        <label class="user" for="login-username">
+                            <span><i class="fa fa-user fa-lg"></i></span>
+                        </label>
+                        <input id="login-username" type="text" class="kugesamopag-input" placeholder="Имя пользователя" required>
+                    </div>
+
+                    <div class="spacer"></div>
+                
+                    <div class="kugesamopag-field">
+                        <label class="lock" for="login-password"><span><i class="fa fa-lock fa-lg"></i></span></label>
+                        <input id="login-password" type="password" class="kugesamopag-input" placeholder="Пароль" required>
+                        <!-- <label for="login-password"><span><i class="fa fa-eye fa-lg"></i></span></label> -->
+                    </div>
+
+                    <div class="remember-me"><label for="remember-me" class="remember-me"><input type="checkbox" id="remember-me" name="remember"> Запомнить меня</label></div>
+                    <br>
+                    <div class="kugesamopag-field-end">
+                        <input class="inputButton" type="submit" value="Войти">
+                    </div>
+                    <div class="bottomLink">
+                        <a href="#" class="linkRP">Регистрация</a>
+                        <div class="verticalLine">|</div>
+                        <a href="#" class="linkRP">Забыли пароль?</a>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
