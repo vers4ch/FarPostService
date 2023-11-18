@@ -7,6 +7,7 @@
     <title>Система авторизации</title>
     <link rel="stylesheet" href="static/styles/main.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
 </head>
 <body>
     <div class="main">
@@ -18,15 +19,15 @@
                         <label class="user" for="login-username">
                             <span><i class="fa fa-user fa-lg"></i></span>
                         </label>
-                        <input id="login-username" type="text" class="kugesamopag-input" placeholder="Имя пользователя" required>
+                        <input id="login-username" name="username" type="text" class="kugesamopag-input" placeholder="Имя пользователя" required>
                     </div>
 
                     <div class="spacer"></div>
                 
                     <div class="kugesamopag-field">
                         <label class="lock" for="login-password"><span><i class="fa fa-lock fa-lg"></i></span></label>
-                        <input id="login-password" type="password" class="kugesamopag-input" placeholder="Пароль" required>
-                        <i class="fa fa-eye fa-lg" id="togglePassword" style="transform: translateY(16px); top: 50%; color: gray; margin-left: -22px; cursor: pointer;"></i>
+                        <input id="login-password" name="password" type="password" class="kugesamopag-input" placeholder="Пароль" required>
+                        <i class="fa fa-eye fa-lg" id="togglePassword" style="transform: translateX(-10px) translateY(18px); top: 50%; color: gray; margin-left: -22px; cursor: pointer;"></i>
                     </div>
 
                     <!-- <div class="kugesamopag-field">
