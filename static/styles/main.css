@@ -16,7 +16,7 @@
 }
 
 body {
-	background-color: #58b8ea;   
+	background-color: #c3c4c7;   
 	font-family: 'Lato';                                  
 }
 
@@ -83,11 +83,11 @@ body {
   .kugesamopag-login input[type="submit"] {
 	border-radius: 0.25rem;
 	padding: 1rem;
-	color: #3A3F44;  
+	color: #ffffff;  
   }
   
   .kugesamopag-field label {
-	background-color: #222222;
+	background-color: #1f8bca;
 	border-bottom-right-radius: 0;
 	border-top-right-radius: 0;
 	/* padding-left: 1.25rem;
@@ -100,16 +100,20 @@ body {
 	border-bottom-left-radius: 0;
 	border-top-left-radius: 0;
   }
+
   .kugesamopag-login input[type="text"]:focus, .kugesamopag-login input[type="text"]:hover, .kugesamopag-login input[type="password"]:focus, .kugesamopag-login input[type="password"]:hover {
 	background-color: #eeeeee;
   }
+
   .kugesamopag-login input[type="submit"] {
-	background-color: #00B9BC;
+	background-color: #f28e39;
 	color: #eee;
 	font-weight: bold;
   }
+
   .kugesamopag-login input[type="submit"]:focus, .kugesamopag-login input[type="submit"]:hover {
-	background-color: #197071;
+	background-color: #eb750e;
+
   }
   .kugesamopag-field {
 	display: -webkit-box;
@@ -119,7 +123,7 @@ body {
 	/* margin-bottom: 2rem; */
   }
 
-  .user-box{
+  .user-box {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -137,6 +141,7 @@ body {
   .inputButton {
 	font-size: 16px;
   }
+
   .inputButton:hover {
 	cursor: pointer;
   }
@@ -182,7 +187,7 @@ body {
 	height: 30px;
   }
 
-  .bottomLink{
+  .bottomLink {
 	/* border-left: thick solid #ff0000; */
 	display: flex;
     justify-content: center;
@@ -196,10 +201,19 @@ body {
 	margin-right: 2%;
   }
 
-  .toggle-password {
+  .kugesamopag-field {
+    position: relative;
+  }
+
+.toggle-password {
     cursor: pointer;
-    /* position: absolute;
-    right: 10px;
-    top: 50%; */
-    /* transform: translateY(-50%); */
+    position: absolute;
+    /* right: 10px;
+    top: 50%;
+    transform: translateY(-100%); */
+}
+
+.eye-icon {
+	margin: 0;
+	transform: translateY(32px);
 }
