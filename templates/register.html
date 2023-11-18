@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система авторизации</title>
+    <link rel="stylesheet" href="static/styles/main2.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="main">
+        <div class="kugesanudsav">
+            <div class="logo">Регистрация</div>
+            <div class="kugesada-szetunomon">
+                <form action="" method="post" class="kugesamopag kugesamopag-register">
+                    <div class="bottomLink">
+                        <!-- <a href="#" class="linkRP customer">Заказчик</a>
+                        <div class="verticalLine">|</div>
+                        <a href="#" class="linkRP master">Мастер</a> -->
+                        <a href="#" class="linkRP customer" id="customerLink">Заказчик</a>
+                        <div class="verticalLine">|</div>
+                        <a href="#" class="linkRP master" id="masterLink">Мастер</a>
+                    </div>
+                    <br>
+                    
+                    <div class="kugesamopag-field">
+                        <label class="user" for="register-firstname">
+                            <span><i class="fa fa-user fa-lg"></i></span>
+                        </label>
+                        <input id="register-firstname" name="firstname" type="text" class="kugesamopag-input" placeholder="Имя" required>
+                    </div>
+
+                    <div class="spacer"></div>
+
+                    <div class="kugesamopag-field">
+                        <label class="user" for="register-lastname">
+                            <span><i class="fa fa-user fa-lg"></i></span>
+                        </label>
+                        <input id="register-lastname" name="lastname" type="text" class="kugesamopag-input" placeholder="Фамилия" required>
+                    </div>
+
+                    <div class="spacer"></div>
+
+                    <div class="kugesamopag-field">
+                        <label class="user" for="register-patronymic">
+                            <span><i class="fa fa-user fa-lg"></i></span>
+                        </label>
+                        <input id="register-patronymic" name="patronymic" type="text" class="kugesamopag-input" placeholder="Отчество" required>
+                    </div>
+
+                    <div class="spacer"></div>
+
+                    <div class="kugesamopag-field">
+                        <label class="envelope" for="register-email">
+                            <span><i class="fa fa-envelope fa-lg"></i></span>
+                        </label>
+                        <input id="register-email" name="email" type="text" class="kugesamopag-input" placeholder="Email" required>
+                    </div>
+
+                    <div class="spacer"></div>
+
+                    <!-- <div class="kugesamopag-field">
+                        <label class="lock" for="register-password">
+                            <span><i class="fa fa-lock fa-lg"></i></span>
+                        </label>
+                        <input id="register-password" type="password" class="kugesamopag-input" placeholder="Пароль" required>
+                    </div> -->
+
+                    <div class="kugesamopag-field">
+                        <label class="lock" for="login-password"><span><i class="fa fa-lock fa-lg"></i></span></label>
+                        <input id="login-password" name="password" type="password" class="kugesamopag-input" placeholder="Пароль" required>
+                        <i class="fa fa-eye fa-lg" id="togglePassword" style="transform: translateX(-10px) translateY(18px); top: 50%; color: gray; margin-left: -22px; cursor: pointer;"></i>
+                    </div>
+
+                    <!-- <div class="kugesamopag-field">
+                        <label for="agree-terms">
+                            <input type="checkbox" id="agree-terms" name="agree-terms" required>
+                            Я согласен с условиями обработки персональных данных
+                        </label>
+                    </div> -->
+
+                    <!-- <div class="remember-me"><label for="remember-me" class="remember-me"><input type="checkbox" id="remember-me" name="remember"><a href="#" class="linkRP"> Я согласен с условиями обработки персональных данных</a></label></div> -->
+                    <div class="remember-me">
+                        <label for="remember-me" class="remember-me">
+                            <input type="checkbox" id="remember-me" name="remember"> Я согласен с условиями обработки персональных данных</a></label>
+                    </div>
+                    <br>
+                    <div class="kugesamopag-field-end">
+                        <input class="inputButton2" type="submit" value="Зарегистрироваться">
+                    </div>
+                    <!-- <div class="kugesamopag-field-end">
+                        <input class="inputButton" type="submit" value="Зарегистрироваться">
+                    </div> -->
+
+                    <div class="bottomLink">
+                        <a href="#" class="linkRP">Уже есть аккаунт? Войти</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("togglePassword").addEventListener("click", togglePasswordVisibility);
+
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("login-password");
+            var eyeIcon = document.getElementById("togglePassword");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.classList.remove("fa-eye");
+                eyeIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.classList.remove("fa-eye-slash");
+                eyeIcon.classList.add("fa-eye");
+            }
+        }
+    </script>
+
+    <script>
+        document.getElementById("customerLink").addEventListener("click", function() {
+            switchRegistrationType("customer");
+        });
+
+        document.getElementById("masterLink").addEventListener("click", function() {
+            switchRegistrationType("master");
+        });
+
+        function switchRegistrationType(type) {
+            var form = document.querySelector(".kugesamopag-register");
+            var bottomLink = document.querySelector(".bottomLink");
+
+            if (type === "customer") {
+                form.setAttribute("action", "customer-registration.php");
+                bottomLink.innerHTML = '<a href="#" class="linkRP customer">Заказчик</a><div class="verticalLine">|</div><a href="#" class="linkRP master" id="masterLink">Мастер</a>';
+            } else if (type === "master") {
+                form.setAttribute("action", "master-registration.php");
+                bottomLink.innerHTML = '<a href="#" class="linkRP customer" id="customerLink">Заказчик</a><div class="verticalLine">|</div><a href="#" class="linkRP master">Мастер</a>';
+            }
+        }
+    </script>
+    
+    <script>
+        document.getElementById("customerLink").addEventListener("click", function() {
+            switchRegistrationType("customer");
+        });
+
+        document.getElementById("masterLink").addEventListener("click", function() {
+            switchRegistrationType("master");
+        });
+
+        function switchRegistrationType(type) {
+            var form = document.querySelector(".kugesamopag-register");
+            var bottomLinkCustomer = document.getElementById("customerLink");
+            var bottomLinkMaster = document.getElementById("masterLink");
+
+            if (type === "customer") {
+                form.setAttribute("action", "customer-registration.php");
+                bottomLinkCustomer.classList.add("selectedCustomer");
+                bottomLinkMaster.classList.remove("selectedMaster");
+            } else if (type === "master") {
+                form.setAttribute("action", "master-registration.php");
+                bottomLinkCustomer.classList.remove("selectedCustomer");
+                bottomLinkMaster.classList.add("selectedMaster");
+            }
+        }
+    </script>
+</body>
+</html>
