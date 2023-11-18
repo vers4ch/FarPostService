@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    <ul>
+		<!-- templates/search_results.html -->
+		{% for service in results %}
+			<h2>{{ service.name_service }}</h2>
+			<p>{{ service.subgroup }}</p>
+		<!-- Дополнительная информация о услуге -->
+		{% endfor %}
+    </ul>
+</body>
+</html>
+
