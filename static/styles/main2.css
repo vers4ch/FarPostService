@@ -232,7 +232,7 @@ input {
 }
 
 .kugesamopag-input:focus {
-    color: black; /* Черный цвет текста при активном состоянии */
+    color: black !important; /* Черный цвет текста при активном состоянии */
 }
 
 .remember-me {
@@ -241,4 +241,11 @@ input {
 
 .kugesamopag-field input {
     text-indent: 10px; /* Измените значение на ваш выбор */
+}
+
+.registration-image {
+    width: 350px;
+    height: auto;
+    display: block;
+	margin: 20px auto -50px;
 }
