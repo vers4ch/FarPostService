@@ -66,14 +66,19 @@ input {
 	width: 100%;
  }
   
-.kugesamopag-field label,
-.kugesamopag-login input[type="text"],
-.kugesamopag-login input[type="password"],
-.kugesamopag-login input[type="submit"] {
+ .kugesamopag-field label {
 	border-radius: 0.25rem;
 	padding: 1rem;
-	color: #ffffff;  
-}
+	color: #ffffff;
+  }
+
+  .kugesamopag-login input[type="text"],
+  .kugesamopag-login input[type="password"],
+  .kugesamopag-login input[type="submit"] {
+	border-radius: 0.25rem;
+	padding: 1rem;
+	color: black;
+  }
   
 .kugesamopag-field label {
 	background-color: #1f8bca;
@@ -88,10 +93,12 @@ input {
 	background-color: #ffffff;
 	border-bottom-left-radius: 0;
 	border-top-left-radius: 0;
+	color: black;
 }
 
 .kugesamopag-login input[type="text"]:focus, .kugesamopag-login input[type="text"]:hover, .kugesamopag-login input[type="password"]:focus, .kugesamopag-login input[type="password"]:hover {
 	background-color: #eeeeee;
+	color: black;
 }
 
 .kugesamopag-login input[type="submit"] {
@@ -157,13 +164,14 @@ input {
 }
 
 .linkRP {
-	display: flex; 
-	justify-content: center;
+	/* display: flex;  */
+	/* justify-content: center; */
 	color: white;
 	text-decoration: none;
 }
 
 .linkRP:hover {
+	cursor: pointer;
 	text-decoration: underline;
 }
 
@@ -208,39 +216,39 @@ input {
 .inputButton2 {
 	font-size: 16px;
 	padding: 16px;
-	background-color: #f28e39;
+	background-color: #eb750e;
 	border-radius: 3px;
 	font-weight: bold;
 }
 
 .inputButton2:hover {
 	cursor: pointer;
-	background-color: #eb750e;
+	background-color: #f28e39;
 }
 
 .linkRP.customer, .linkRP.master {
 	padding: 5px 10px;
+	width: 10vh;
+	text-decoration: none;
 	font-size: 20px;
 }
 
-.selectedCustomer {
-	font-weight: bold; /* или другие стили, чтобы выделить выбранную ссылку заказчика */
-}
-
+.selectedCustomer,
 .selectedMaster {
-	font-weight: bold; /* или другие стили, чтобы выделить выбранную ссылку мастера */
+	/* background-color: #979797; */
+	background-color: #eb750e;
+	border-radius: 10px;
+	color: #ffffff;
+	text-decoration: none;
 }
 
 .kugesamopag-input:focus {
-    color: black !important; /* Черный цвет текста при активном состоянии */
-}
-
-.remember-me {
-    text-align: center; /* Выравнивание текста по центру */
+    color: black !important; /* Черный цвет текста при активном состоянии*/
 }
 
 .kugesamopag-field input {
     text-indent: 10px; /* Измените значение на ваш выбор */
+	color: black;
 }
 
 .registration-image {

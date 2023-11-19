@@ -72,87 +72,124 @@ img {
     /* max-width: 100%; */
 }
 
-#sticky-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: #f1f1f1;
-  padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 2;
-}
-
-.searcher {
-  margin-top: 5vh; /* Уменьшено значение отступа сверху */
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative; /* Добавлено для корректного позиционирования вложенных элементов */
+/* .searcher {
+    margin-top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center
 }
 
 .searchForm {
-  font-size: 32px;
-  color: #1f8bca;
-  display: flex;
-  border-radius: 10px;
-  justify-content: space-between;
-  align-items: center;
-  width: 80%; /* Уменьшено значение ширины формы */
-  height: 8vh; /* Уменьшено значение высоты формы */
-  position: relative;
-  z-index: 1;
-}
-
-.fa-search {
-  margin-right: -40px; /* Уменьшено значение отступа лупы справа */
-}
-
-.search-input-wrapper {
-  position: relative;
-  width: 70%;
+    font-size: 32px;
+    color: #1f8bca;
+    display: flex;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 10vh;
 }
 
 .searchForm input {
-  color: #000000;
-  font-size: 24px;
-  margin-inline: 2%;
-  text-indent: 10px;
-  width: 100%;
-  height: 7vh;
-  border-radius: 5px;
-  border: 0;
-  background-color: white;
+    color: #000000;
+    font-size: 30px;
+    margin-inline: 2%;
+    text-indent: 10px;
+    width: 70%;
+    height: 7vh;
+    border-radius: 5px;
+    border: 0;
+    background-color: white;
 }
 
 .searchForm button {
-  font-size: 24px;
-  border-radius: 5px;
-  height: 7vh;
-  width: 20%;
-  background-color: #f28e39;
-  color: white;
-  border: 0;
+    font-size: 24px;
+    border-radius: 5px;
+    height: 7vh;
+    width: 12%;
+    background-color: #f28e39;
+    color: white;
+    border: 0;
 }
 
 .searchForm button:hover {
-  cursor: pointer;
-  background-color: #fda75c;
+    cursor: pointer;
+    background-color: #fda75c;
+} */
+
+.searcher {
+    margin-top: 5vh; /* Уменьшено значение отступа сверху */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Добавлено для корректного позиционирования вложенных элементов */
+}
+
+.searchForm {
+    font-size: 32px;
+    color: #1f8bca;
+    display: flex;
+    border-radius: 10px;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%; /* Уменьшено значение ширины формы */
+    height: 8vh; /* Уменьшено значение высоты формы */
+    position: relative;
+    z-index: 1;
+}
+
+.fa-search {
+    margin-right: -40px; /* Уменьшено значение отступа лупы справа */
+}
+
+.search-input-wrapper {
+    position: relative;
+    width: 70%;
+}
+
+.searchForm input {
+    color: #000000;
+    font-size: 24px;
+    margin-inline: 2%;
+    text-indent: 10px;
+    width: 100%;
+    height: 7vh;
+    border-radius: 5px;
+    border: 0;
+    background-color: white;
+}
+
+.searchForm button {
+    font-size: 24px;
+    border-radius: 5px;
+    height: 7vh;
+    width: 20%;
+    background-color: #f28e39;
+    color: white;
+    border: 0;
+}
+
+.searchForm button:hover {
+    cursor: pointer;
+    background-color: #fda75c;
 }
 
 .clear-icon {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  cursor: pointer;
-  display: none;
-  z-index: 1;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    display: none;
+    z-index: 1;
 }
 
 .searchForm:hover .clear-icon {
-  display: block;
+    display: block;
 }
+
 .base {
     display: flex;
     display: flex;
@@ -165,11 +202,12 @@ img {
     display: flex;
     width: 90%;
     border-radius: 20px;
-    flex-wrap: wrap;
-    flex-direction: row;
+    flex-direction: column;
     background-color: #1f8bca;
-    justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    align-content: space-between;
+    justify-content: flex-start;
 }
 
 .service-block {
@@ -194,14 +232,15 @@ img {
 
 
 
-/* #sticky-header {
+#sticky-header {
     position: fixed;
     top: 0;
     width: 100%;
     background-color: #f1f1f1;
     padding: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  } */
+    z-index: 2;
+  }
   
   .container {
     display: flex;
@@ -234,6 +273,7 @@ img {
     width: 100%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     animation: fadeInDown 0.5s;
+    z-index: 100;
   }
 
   .start-image {
@@ -305,7 +345,6 @@ img {
   .footer-column {
     flex: 1;
     text-align: center;
-    width: 10%;
   }
   
   .footer-column h3 {
@@ -328,3 +367,65 @@ img {
   .footImg img {
     margin-bottom: 10px; /* Добавлен отступ между изображениями */
   }
+
+  .header {
+    z-index: 2; /* Установка более высокого z-индекса для хэдера */
+}
+
+.containerServices {
+    display: flex;
+    flex-direction: column;
+    color: white; /* Белый текст для контейнера личных данных */
+}
+
+.containerServices h2 {
+    margin-top: 20px;
+    color: white; /* Белый текст для заголовка "Личные данные" */
+}
+
+.input-group {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.input-group label {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 5px;
+    color: white; /* Белый текст для меток */
+    display: inline-block;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    display: inline-block;
+    color: black; /* Черный текст для полей ввода */
+}
+
+.profile {
+    width: 60%; /* Устанавливаем ширину блока */
+    margin-left: auto; /* Выравниваем справа */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.side-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.menu-button {
+    margin-bottom: 10px;
+    padding: 8px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}

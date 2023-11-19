@@ -14,7 +14,7 @@
         <div class="kugesanudsav">
             <div class="logo">Авторизация</div>
             <div class="kugesada-szetunomon">
-                <form action="" method="post" class="kugesamopag kugesamopag-login">
+                <form action="/" method="post" class="kugesamopag kugesamopag-login">
                     <div class="kugesamopag-field">
                         <label class="user" for="login-username">
                             <span><i class="fa fa-user fa-lg"></i></span>
@@ -50,6 +50,21 @@
             </div>
         </div>
     </div>
+    <div style="display: flex; justify-content: center; align-items: flex-start;">
+        <div style="width: 30%; text-align: center;">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                        {% for message in messages %}
+                            <p style="margin-top: 0; font-size: 20px; color: red;">{{ message }}</p>
+                            <!-- <script>
+                                alert("Неверный логин или пароль!");
+                            </script> -->
+                        {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+
 
     <script>
         document.getElementById("togglePassword").addEventListener("click", togglePasswordVisibility);

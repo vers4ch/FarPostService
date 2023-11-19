@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarServiceHub</title>
+    <link rel="stylesheet" href="static/styles/nc.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+    <header id="sticky-header">
+        <div class="container">
+          <div class="left-container">
+            <img src="static/images/fshB.png" height="50%">
+          </div>
+          <div class="center-container">
+            {% if user.is_master == True %}
+                <a class="centralLink" href="create_master_card">Просмотреть заказы</a>
+            {% endif %}
+            {% if user.is_master == False %}
+                <a class="centralLink" href="#">Разместить заказы</a>
+            {% endif %}
+          </div>
+          <div class="right-container">
+            <a class="profileLink" href="{{ url_for('profile') }}"><i class="fa fa-user fa-lg" style="margin-right: 10px;"></i>{{user.last_name}} {{user.first_name | first}}. {{user.patronymic | first}}.</a>
+          </div>
+        </div>
+      </header>
+
+    <img src="static\images\head.jpg" alt="Image description" class="start-image">
+
+    <div class="image-container">
+        <h1>Создание карточки мастера</h1>
+    </div>
+
+
+
+
+	<div class="base">
+		<form action="/new_card" method="post" class="baseForm">
+			<div>
+				<select id="service-name" name="service-name" required>
+					<option value="" disabled selected>Выберите вид услуги:</option>
+				</select>
+			</div>
+			
+			<div>
+				<select id="service-subgroup" name="service-subgroup" required disabled>
+					<option style="width: 20%;" value="" disabled selected>Выберите услугу:</option>
+				</select>
+			</div>
+
+			<script>
+				document.addEventListener('DOMContentLoaded', function () {
+					const nameServiceSelect = document.getElementById('service-name');
+					const subgroupSelect = document.getElementById('service-subgroup');
+			
+					// Получаем уникальные name_service с сервера
+					fetch('/unique_service_names')
+						.then(response => response.json())
+						.then(data => {
+							// Очищаем первый выпадающий список
+							nameServiceSelect.innerHTML = '<option value="" disabled selected>Выберите вид услуги:</option>';
+			
+							// Добавляем каждый уникальный name_service в первый выпадающий список
+							data.unique_names.forEach(name => {
+								const option = document.createElement('option');
+								option.value = name;
+								option.textContent = name;
+								nameServiceSelect.appendChild(option);
+							});
+			
+							// Обработчик события выбора name_service
+							nameServiceSelect.addEventListener('change', function () {
+								// Получаем выбранный name_service
+								const selectedNameService = nameServiceSelect.value;
+			
+								// Очищаем второй выпадающий список
+								subgroupSelect.innerHTML = '<option value="" disabled selected>Выберите подгруппу услуги:</option>';
+			
+								// Если name_service не выбран, блокируем второй выпадающий список и выходим
+								if (!selectedNameService) {
+									subgroupSelect.disabled = true;
+									return;
+								}
+			
+								// Получаем подгруппы для выбранного name_service с сервера
+								fetch(`/service_subgroups/${selectedNameService}`)
+									.then(response => response.json())
+									.then(subgroupsData => {
+										// Добавляем каждую подгруппу во второй выпадающий список
+										subgroupsData.subgroups.forEach(subgroup => {
+											const option = document.createElement('option');
+											option.value = subgroup;
+											option.textContent = subgroup;
+											subgroupSelect.appendChild(option);
+										});
+			
+										// Разблокируем второй выпадающий список
+										subgroupSelect.disabled = false;
+									})
+									.catch(error => console.error('Error fetching subgroups:', error));
+							});
+						})
+						.catch(error => console.error('Error fetching unique names:', error));
+				});
+			</script>
+			
+
+			<div class="spacer"></div>
+
+			<div>
+				<input id="about" name="about" type="text" placeholder="О себе:" required>
+			</div>
+
+			<div class="spacer"></div>
+
+			<div>
+				<input id="education" name="education" type="text" placeholder="Образование" required>
+			</div>
+
+			<div class="spacer"></div>
+
+			<div>
+				<input id="exp" name="exp" type="text" placeholder="Опыт работы" required>
+			</div>
+
+			<div class="spacer"></div>
+
+			<div>
+				<input id="price" name="price" type="text" placeholder="Оплата" required>
+			</div>
+
+			<div>
+				<input id="address" name="address" type="text" placeholder="Район работы" required>
+			</div>
+
+			<div class="spacer"></div>
+
+			<!-- <br> -->
+			<div>
+				<input class="inputButton" type="submit" value="Создать карточку">
+			</div>
+		</form>
+	</div>
+
+
+
+
+
+
+
+
+    <footer>
+        <div class="footImg">
+            <img src="static/images/fsh.png" style="height: 15vh;">
+            <img src="static/images/Farpost_horizontal.png" style="margin-top: -40px; height: 15vh;">
+        </div>
+        <div class="footer-column">
+          <h3>Разделы</h3>
+          <p><a href="#">Все услуги</a></p>
+          <p><a href="#">История заказов</a></p>
+          <p><a href="#">Мобильная версия</a></p>
+          <p><a href="#">Telegram-Бот</a></p>
+        </div>
+        <div class="footer-column">
+          <h3>Информация</h3>
+          <p><a href="#">Вакансии</a></p>
+          <p><a href="#">Контакты</a></p>
+          <p>Служба поддержки:</p>
+          <p><a href="#">+7999615XXXX</a></p>
+          <p>© ООО «Фарпост», 1997—2023</p>
+        </div>
+    </footer>
+
+
+
+    <script src="sticky-header.js">
+        document.addEventListener("DOMContentLoaded", function () {
+            window.onscroll = function () {
+                stickyHeader();
+        };
+
+        var header = document.getElementById("sticky-header");
+        var sticky = header.offsetTop;
+
+        function stickyHeader() {
+            if (window.pageYOffset > sticky) {
+            header.classList.add("fixed");
+            } else {
+            header.classList.remove("fixed");
+            }
+        }
+        });
+    </script>
+</body>
+</html>

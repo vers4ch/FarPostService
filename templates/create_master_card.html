@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Система авторизации</title>
-    <link rel="stylesheet" href="static/styles/sr.css">
+    <link rel="stylesheet" href="static/styles/cmc.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
 </head>
@@ -17,7 +17,7 @@
           </div>
           <div class="center-container">
             {% if user.is_master == True %}
-                <a class="centralLink" href="#">Посмотреть заказы</a>
+                <a class="centralLink" href="#">Просмотреть заказы</a>
             {% endif %}
             {% if user.is_master == False %}
                 <a class="centralLink" href="#">Разместить заказы</a>
@@ -32,17 +32,42 @@
     <img src="static\images\head.jpg" alt="Image description" class="start-image">
 
 	<div style="display: flex;width: 100%;color: white;justify-content: center;">
-		<h1>Результаты поиска</h1>
+		<h1>Мои карточки</h1>
 	</div>
+
 	<div class="base">
-		<!-- templates/search_results.html -->
-		{% for service in results %}
-			<div class="card-box">
-				<h2>{{ service.name_service }}</h2>
-				<p>{{ service.subgroup }}</p>
-			</div>
-		<!-- Дополнительная информация о услуге -->
-		{% endfor %}
+		{% for card in cards %}
+        <div class="card mb-3">
+            <div class="card-box">
+                <h2 class="card-name">{{user.last_name}} {{user.first_name}} {{user.patronymic}}</h2>
+                <p class="card-text" style="margin: 0;"><i class="fa fa-star" aria-hidden="true"></i> {{ card.sum_rate/card.count_rate }} <i class="fa fa-commenting" aria-hidden="true"></i> {{ card.count_rate }}</p>
+                
+                <p class="card-text" style="text-decoration: underline; margin-bottom: 0;">Вид услуги:</p>
+                <p class="card-text" style="margin: 0;">{{ service.name_service }}->{{ card.service_id }}</p>
+
+                <p class="card-text" style="text-decoration: underline; margin-bottom: 0;">О себе:</p>
+                <p class="card-text" style="margin: 0;">{{ card.about_master }}</p>
+
+                <p class="card-text" style="text-decoration: underline; margin-bottom: 0;">Образование:</p>
+                <p class="card-text" style="margin: 0;">{{ card.education }}</p>
+
+                <p class="card-text" style="text-decoration: underline; margin-bottom: 0;">Опыт работы:</p>
+                <p class="card-text" style="margin: 0;">{{ card.experience }} года</p>
+
+                <p class="card-text" style="text-decoration: underline; margin-bottom: 0;">Оплата:</p>
+                <p class="card-text" style="margin: 0;">{{ card.price }}</p>
+
+                <p class="card-text" style="text-decoration: underline; margin-bottom: 0;">Район работы:</p>
+                <p class="card-text" style="margin: 0;">{{ card.address }}</p>
+            </div>
+        </div>
+        {% endfor %}
+		<a class="new-card-a" href="/new_card"><div class="new-card-box">
+        
+			<h1>Создать</h1>
+			<i class="fa fa-plus-circle fa-5x"></i>
+        
+		</div></a>
 	</div>
 
 
@@ -93,4 +118,3 @@
 
 </body>
 </html>
-

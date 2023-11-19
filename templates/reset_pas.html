@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система авторизации</title>
+    <link rel="stylesheet" href="static/styles/main3.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+    <img src="static\images\fshB.png" alt="Image Description" class="registration-image" >
+    <div class="main">
+        <div class="kugesanudsav">
+            <div class="logo">Сброс пароля</div>
+            <div class="kugesada-szetunomon">
+                <form action="" method="post" class="kugesamopag kugesamopag-login">
+
+                    <!-- <div class="kugesamopag-field">
+                        <label class="envelope" for="register-email">
+                            <span><i class="fa fa-envelope fa-lg"></i></span>
+                        </label>
+                        <input id="register-email" name="email" type="text" class="kugesamopag-input" placeholder="Email" required>
+                    </div> -->
+                    <div class="kugesamopag-field">
+                        <label class="envelope" for="register-email">
+                            <span><i class="fa fa-envelope fa-lg"></i></span>
+                        </label>
+                        <input id="register-email" name="email" type="text" class="kugesamopag-input" placeholder="Email" required>
+                    </div>
+                    <p>* На указанный email придет письмо с инструкцией по смене пароля</p>
+
+                    
+                
+                    <div class="kugesamopag-field-end">
+                        <input class="inputButton" type="submit" value="Сбросить">
+                    </div>
+                    <div style="display: flex; justify-content: center;">
+                        <p style="margin: 0;">Вспомнили пароль? <a class="linkReset" href="{{ url_for('login') }}">Вернуться назад</a></p>
+                    </div>
+                    <!-- <div class="bottomLink">
+                        <a href="{{ url_for('register') }}" class="linkRP">Регистрация</a>
+                        <div class="verticalLine">|</div>
+                        <a href="#" class="linkRP">Забыли пароль?</a>
+                    </div> -->
+                </form>
+            </div>
+        </div>
+        
+
+    </div>
+    
+    
+</body>
+</html>

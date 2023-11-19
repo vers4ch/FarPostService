@@ -16,184 +16,184 @@
 }
 
 body {
-	background-color: #c3c4c7;   
-	font-family: 'Lato';                                  
+ background-color: #c3c4c7;   
+ font-family: 'Lato';                                  
 }
 
 .kugesanudsav {
-	background:rgba(58,63,68,0.5);
-	border-radius: 5px;
-	box-shadow: 0 1.5px 0 0 rgba(0,0,0,0.1);
-	width:450px;
-	display: flex;  
-	padding-bottom: 25px;
-	flex-direction: column;
+ background:rgba(58,63,68,0.5);
+ border-radius: 5px;
+ box-shadow: 0 1.5px 0 0 rgba(0,0,0,0.1);
+ width:450px;
+ display: flex;  
+ padding-bottom: 25px;
+ flex-direction: column;
   }
   
   .logo {
-	/* font-family: "museo-slab";   */
-	color: white;
-	font-weight: bold;
-	font-size:32px;
-	text-align: center;
-	padding: 20px 20px 0;
-	margin:0;
+ /* font-family: "museo-slab";   */
+ color: white;
+ font-weight: bold;
+ font-size:32px;
+ text-align: center;
+ padding: 20px 20px 0;
+ margin:0;
   }
   
   .kugesada-szetunomon {
-	color: #ffff;
-	padding:25px 25px 0;
-	/* margin: 20px 20px 0;   */
-	margin-left: 40px;
-	margin-right: 40px;
+ color: #ffff;
+ padding:25px 25px 0;
+ /* margin: 20px 20px 0;   */
+ margin-left: 40px;
+ margin-right: 40px;
 
-	border-radius: 3px;
+ border-radius: 3px;
   }
   
   input {
-	border: 0;
-	/* color: inherit; */
-	color: black;
-	/* font: inherit; */
-	margin: 0;
-	outline: 0;
-	padding: 0;
-	-webkit-transition: background-color .3s;
-	transition: background-color .3s;
+ border: 0;
+ /* color: inherit; */
+ color: black;
+ /* font: inherit; */
+ margin: 0;
+ outline: 0;
+ padding: 0;
+ -webkit-transition: background-color .3s;
+ transition: background-color .3s;
   }
   
   .kugesamopag input[type="password"], .kugesamopag input[type="text"], .kugesamopag input[type="submit"] {
-	width: 100%;
-	color: black;
+ width: 100%;
+ color: black;
   }
   
   .kugesamopag-field label {
-	border-radius: 0.25rem;
-	padding: 1rem;
-	color: #ffffff;
+ border-radius: 0.25rem;
+ padding: 1rem;
+ color: #ffffff;
   }
 
   .kugesamopag-login input[type="text"],
   .kugesamopag-login input[type="password"],
   .kugesamopag-login input[type="submit"] {
-	border-radius: 0.25rem;
-	padding: 1rem;
-	color: black;
+ border-radius: 0.25rem;
+ padding: 1rem;
+ color: black;
   }
   
   .kugesamopag-field label {
-	background-color: #1f8bca;
-	border-bottom-right-radius: 0;
-	border-top-right-radius: 0;
-	/* padding-left: 1.25rem;
-	padding-right: 1.25rem; */
-	width: 25px;
+ background-color: #1f8bca;
+ border-bottom-right-radius: 0;
+ border-top-right-radius: 0;
+ /* padding-left: 1.25rem;
+ padding-right: 1.25rem; */
+ width: 25px;
   }
   
   .kugesamopag-login input[type="text"], .kugesamopag-login input[type="password"] {
-	background-color: #ffffff;
-	border-bottom-left-radius: 0;
-	border-top-left-radius: 0;
+ background-color: #ffffff;
+ border-bottom-left-radius: 0;
+ border-top-left-radius: 0;
   }
 
   .kugesamopag-login input[type="text"]:focus, .kugesamopag-login input[type="text"]:hover, .kugesamopag-login input[type="password"]:focus, .kugesamopag-login input[type="password"]:hover {
-	background-color: #eeeeee;
+ background-color: #eeeeee;
   }
 
   .kugesamopag-login input[type="submit"] {
-	background-color: #f28e39;
-	color: #eee;
-	font-weight: bold;
+ background-color: #f28e39;
+ color: #eee;
+ font-weight: bold;
   }
 
   .kugesamopag-login input[type="submit"]:focus, .kugesamopag-login input[type="submit"]:hover {
-	background-color: #eb750e;
+ background-color: #eb750e;
 
   }
   .kugesamopag-field {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	/* margin-bottom: 2rem; */
+ display: -webkit-box;
+ display: -webkit-flex;
+ display: -ms-flexbox;
+ display: flex;
+ /* margin-bottom: 2rem; */
   }
 
   .user-box {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
+ display: -webkit-box;
+ display: -webkit-flex;
+ display: -ms-flexbox;
+ display: flex;
   }
 
   .kugesamopag-field-end {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	margin-bottom: 1rem;
+ display: -webkit-box;
+ display: -webkit-flex;
+ display: -ms-flexbox;
+ display: flex;
+ margin-bottom: 1rem;
   }
 
   .inputButton {
-	font-size: 16px;
+ font-size: 16px;
   }
 
   .inputButton:hover {
-	cursor: pointer;
+ cursor: pointer;
   }
   
   .mancesaudsag {
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: 1px;
-	margin: -1px;
-	overflow: mancesaudsag;
-	padding: 0;
-	position: absolute;
-	width: 1px;
+ border: 0;
+ clip: rect(0 0 0 0);
+ height: 1px;
+ margin: -1px;
+ overflow: mancesaudsag;
+ padding: 0;
+ position: absolute;
+ width: 1px;
   }
   
   .text--center {
-	text-align: center;
+ text-align: center;
   }
 
   .main { 
-	margin-top: 5%;
-	display: flex;
+ margin-top: 5%;
+ display: flex;
     justify-content: center;
   }
 
   .linkRP {
-	display: flex; 
-	justify-content: center;
-	color: white;
-	text-decoration: none;
+ display: flex; 
+ justify-content: center;
+ color: white;
+ text-decoration: none;
   }
 
   .linkRP:hover {
-	text-decoration: underline;
+ text-decoration: underline;
   }
 
   .remember-me {
-	color: white;
-	padding-top: 10px;
+ color: white;
+ padding-top: 10px;
   }
 
   .spacer {
-	height: 30px;
+ height: 30px;
   }
 
   .bottomLink {
-	/* border-left: thick solid #ff0000; */
-	display: flex;
+ /* border-left: thick solid #ff0000; */
+ display: flex;
     justify-content: center;
     flex-wrap: nowrap;
     align-items: center;
   }
 
   .verticalLine {
-	/* width: 5%; */
-	margin-left: 2%;
-	margin-right: 2%;
+ /* width: 5%; */
+ margin-left: 2%;
+ margin-right: 2%;
   }
 
   .kugesamopag-field {
@@ -209,8 +209,8 @@ body {
 }
 
 .eye-icon {
-	margin: 0;
-	transform: translateY(32px);
+ margin: 0;
+ transform: translateY(32px);
 }
 
 .kugesamopag-input:focus {
@@ -221,5 +221,14 @@ body {
     width: 350px;
     height: auto;
     display: block;
-	margin: 20px auto -50px;
+ margin: 20px auto -50px;
+}
+
+.linkReset {
+  color: white;
+  text-decoration: none;
+}
+
+.linkReset:hover {
+  text-decoration: underline;
 }

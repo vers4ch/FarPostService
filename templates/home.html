@@ -10,7 +10,28 @@
 
 </head>
 <body>
-    <div class="head">
+
+    <header id="sticky-header">
+        <div class="container">
+          <div class="left-container">
+            <img src="static/images/fshB.png" height="50%">
+          </div>
+          <div class="center-container">
+            {% if user.is_master == True %}
+                <a class="centralLink" href="create_master_card">Просмотреть заказы</a>
+            {% endif %}
+            {% if user.is_master == False %}
+                <a class="centralLink" href="#">Разместить заказы</a>
+            {% endif %}
+          </div>
+          <div class="right-container">
+            <!-- <a class="profileLink" href="#"><i class="fa fa-user fa-lg" style="margin-right: 10px;"></i>Иванов И. И.</a> -->
+            <a class="profileLink" href="{{ url_for('profile') }}"><i class="fa fa-user fa-lg" style="margin-right: 10px;"></i>{{user.last_name}} {{user.first_name | first}}. {{user.patronymic | first}}.</a>
+          </div>
+        </div>
+      </header>
+
+    <!-- <div class="head">
         <img src="static/images/fshB.png" height="50%">
         {% if user.is_master == True %}
             <a class="centralLink" href="#">Посмотреть заказы</a>
@@ -19,25 +40,43 @@
             <a class="centralLink" href="#">Разместить заказы</a>
         {% endif %}
         <div style="margin-inline: 3%;height: 100%;display: flex;align-items: center;"><a class="profileLink" href="{{ url_for('profile') }}"><i class="fa fa-user fa-lg" style="margin-right: 10px;"></i>{{user.last_name}} {{user.first_name | first}}. {{user.patronymic | first}}.</a></div>
-    </div>
+    </div> -->
 
+    <img src="static\images\head.jpg" alt="Image description" class="start-image">
 
-    <div class="searcher">
+    <!-- <div class="searcher">
         <div class="searcher">
             <form class="searchForm" method="post" action="/search">
                 <i class="fa fa-search fa-lg"></i>
-                <input type="text" name="search_query" required placeholder="Парикмахер">
+                <input type="text" name="search_query" required placeholder="Услуга или специалист">
                 <button type="submit">Поиск</button>
             </form>
         </div>
+    </div> -->
+    <div class="searcher">
+        <form class="searchForm" method="post" action="/search">
+            <i class="fa fa-search fa-lg"></i>
+            <div class="search-input-wrapper">
+                <input type="text" name="search_query" id="searchQuery" required placeholder="Услуга или специалист">
+                <span class="clear-icon" id="clearIcon" onclick="clearSearch()">&times;</span>
+            </div>
+            <button type="submit">Поиск</button>
+        </form>
     </div>
 
-    <div style="width: 100%;">
-        <h2>Все услуги мастеров</h3>
+
+    <div class="image-container">
+        <img src="static\images\Sticker_thousands_offers_w.png" alt="Image 1">
+        <img src="static\images\Sticker_bestfriend_w.png" alt="Image 2">
+        <img src="static\images\Sticker_finde_w.png" alt="Image 3">
     </div>
+
 
     <div class="base">
         <div class="containerServices">
+            <div style="width: 100%; padding-left: 50px;">
+                <h1 style="color: white; font-weight: bold;">Все услуги мастеров</h1>
+            </div>
             {% for name_service, services in grouped_services.items() %}
                 <div class="service-block">
                     <h2><a href="{{ url_for('service_details_by_name', name_service=name_service) }}">{{ name_service }}</a></h2>
@@ -48,6 +87,54 @@
             {% endfor %}
         </div>
     </div>
+
+    <footer>
+        <div class="footImg">
+            <img src="static/images/fsh.png" style="height: 15vh;">
+            <img src="static/images/Farpost_horizontal.png" style="margin-top: -40px; height: 15vh;">
+        </div>
+        <div class="footer-column">
+          <h3>Разделы</h3>
+          <p><a href="#">Все услуги</a></p>
+          <p><a href="#">История заказов</a></p>
+          <p><a href="#">Мобильная версия</a></p>
+          <p><a href="#">Telegram-Бот</a></p>
+        </div>
+        <div class="footer-column">
+          <h3>Информация</h3>
+          <p><a href="#">Вакансии</a></p>
+          <p><a href="#">Контакты</a></p>
+          <p>Служба поддержки:</p>
+          <p><a href="#">+7999615XXXX</a></p>
+          <p>© ООО «Фарпост», 1997—2023</p>
+        </div>
+    </footer>
+
+
+
+    <script src="sticky-header.js">
+        document.addEventListener("DOMContentLoaded", function () {
+            window.onscroll = function () {
+                stickyHeader();
+        };
+
+        var header = document.getElementById("sticky-header");
+        var sticky = header.offsetTop;
+
+        function stickyHeader() {
+            if (window.pageYOffset > sticky) {
+            header.classList.add("fixed");
+            } else {
+            header.classList.remove("fixed");
+            }
+        }
+        });
+    </script>
+    <script>
+        function clearSearch() {
+            document.getElementById('searchQuery').value = '';
+        }
+    </script>
 
 
 </body>

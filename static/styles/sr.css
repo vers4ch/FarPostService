@@ -1,0 +1,204 @@
+/* st.css */
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400; /* Обычный вес шрифта */
+    src: local('Lato Regular'), local('Lato-Regular'), url(fonts/Lato-Regular.woff2) format('woff2');
+    /* Если используете CDN, то можете заменить "url(path/to/lato.woff2)" на ссылку на шрифт с CDN */
+}
+
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700; /* Полужирный вес шрифта */
+    src: local('Lato Bold'), local('Lato-Bold'), url(fonts/Lato-Bold.woff2) format('woff2');
+    /* Замените на ссылку на шрифт с CDN, если используете CDN */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+	background-color: #c3c4c7;   
+	font-family: 'Lato';                                  
+}
+
+.head {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    margin: 0;
+    border-radius: 10px;
+    background-color: white;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20em;
+}
+
+.centralLink {
+    /* padding-top: 5px; */
+    font-size: 18px;
+    padding: 20px;
+    padding-inline: 40px;
+    border-radius: 10px;
+    background-color: #f28e39;
+    color: white;
+    text-decoration: none;
+}
+
+.centralLink:hover {
+    cursor: pointer;
+    background-color: #fda75c;
+}
+
+.profileLink {
+    padding: 20px;
+    padding-inline: 40px;
+    border-radius: 10px;
+    /* background-color: #f28e39; */
+    color: rgb(152, 152, 152);
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.profileLink:hover {
+    color: red;
+}
+
+img {
+    margin-inline: 3%;
+    height: 50%;
+    /* height: 50%; */
+    /* max-width: 100%; */
+}
+/* .base {
+    display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 100px;
+} */
+
+#sticky-header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background-color: #f1f1f1;
+	padding: 10px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.left-container img {
+	height: 50px;
+}
+
+.centralLink, .profileLink {
+	text-decoration: none;
+	color: #333;
+	margin: 0 10px;
+}
+
+.profileLink i {
+	margin-right: 10px;
+}
+
+.content {
+	/* Добавьте отступ сверху, чтобы контент не перекрывался хэдером */
+	margin-top: 80px;
+}
+
+#sticky-header.fixed {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	animation: fadeInDown 0.5s;
+}
+
+.start-image {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	margin-top: 75px;
+	display: block; /* Убедитесь, что изображение является блочным элементом */
+}
+
+.center-container .centralLink {
+	color: white;
+	/* Дополнительные стили, если необходимо */
+	text-decoration: none; /* Убрать подчеркивание ссылок, если нужно */
+}
+
+.image-container {
+	display: flex;
+	justify-content: center; /* Центрируем содержимое по горизонтали */
+	align-items: center; /* Центрируем содержимое по вертикали */
+	margin-top: 20px; /* Отступ сверху */
+	margin-bottom: 20px; /* Отступ снизу */
+}
+
+.image-container img {
+	width: 250px; /* Устанавливаем ширину изображения */
+	height: auto;
+	margin-right: 70px;
+}
+
+footer {
+	background-color: rgba(58,63,68,0.5);
+	color: white;
+	padding: 20px;
+	display: flex;
+	justify-content: space-around;
+}
+
+.footer-column {
+	flex: 1;
+	text-align: center;
+	width: 10%;
+}
+
+.footer-column h3 {
+	margin-bottom: 10px;
+}
+
+.footer-column a {
+	color: white;
+	text-decoration: none;
+}
+
+.footImg {
+	display: flex;
+	flex-direction: column;
+	margin-top: -10px;
+	margin-bottom: 20px;
+	margin-left: 20px; /* Изменен отступ слева на 20px */
+}
+
+.footImg img {
+	margin-bottom: 10px; /* Добавлен отступ между изображениями */
+}
+
+.base {
+	/* height: 1000px; */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.card-box {
+	margin: 50px;
+	width: 500px;
+	height: 500px;
+	background-color: #e7e7e7;
+	border-radius: 10px;
+	color: rgb(11, 8, 8);
+	padding: 30px;
+}

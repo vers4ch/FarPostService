@@ -14,11 +14,8 @@
         <div class="kugesanudsav">
             <div class="logo">Регистрация</div>
             <div class="kugesada-szetunomon">
-                <form action="" method="post" class="kugesamopag kugesamopag-register">
+                <form action="/register" method="post" class="kugesamopag kugesamopag-register">
                     <div class="bottomLink">
-                        <!-- <a href="#" class="linkRP customer">Заказчик</a>
-                        <div class="verticalLine">|</div>
-                        <a href="#" class="linkRP master">Мастер</a> -->
                         <a href="#" class="linkRP customer" id="customerLink">Заказчик</a>
                         <div class="verticalLine">|</div>
                         <a href="#" class="linkRP master" id="masterLink">Мастер</a>
@@ -61,41 +58,24 @@
 
                     <div class="spacer"></div>
 
-                    <!-- <div class="kugesamopag-field">
-                        <label class="lock" for="register-password">
-                            <span><i class="fa fa-lock fa-lg"></i></span>
-                        </label>
-                        <input id="register-password" type="password" class="kugesamopag-input" placeholder="Пароль" required>
-                    </div> -->
-
                     <div class="kugesamopag-field">
                         <label class="lock" for="login-password"><span><i class="fa fa-lock fa-lg"></i></span></label>
                         <input id="login-password" name="password" type="password" class="kugesamopag-input" placeholder="Пароль" required>
                         <i class="fa fa-eye fa-lg" id="togglePassword" style="transform: translateX(-10px) translateY(18px); top: 50%; color: gray; margin-left: -22px; cursor: pointer;"></i>
                     </div>
 
-                    <!-- <div class="kugesamopag-field">
-                        <label for="agree-terms">
-                            <input type="checkbox" id="agree-terms" name="agree-terms" required>
-                            Я согласен с условиями обработки персональных данных
-                        </label>
-                    </div> -->
-
-                    <!-- <div class="remember-me"><label for="remember-me" class="remember-me"><input type="checkbox" id="remember-me" name="remember"><a href="#" class="linkRP"> Я согласен с условиями обработки персональных данных</a></label></div> -->
                     <div class="remember-me">
                         <label for="remember-me" class="remember-me">
                             <input type="checkbox" id="remember-me" name="remember"> Я согласен с условиями обработки персональных данных</a></label>
                     </div>
                     <br>
+                    <input type="hidden" id="registrationType" name="registration_type" value="">
                     <div class="kugesamopag-field-end">
                         <input class="inputButton2" type="submit" value="Зарегистрироваться">
                     </div>
-                    <!-- <div class="kugesamopag-field-end">
-                        <input class="inputButton" type="submit" value="Зарегистрироваться">
-                    </div> -->
 
                     <div class="bottomLink">
-                        <a href="{{ url_for('login') }}" class="linkRP">Уже есть аккаунт? Войти</a>
+                        <p>Уже есть аккаунт? <a href="{{ url_for('login') }}" class="linkRP">Войти</a></p>
                     </div>
                 </form>
             </div>
@@ -119,9 +99,7 @@
                 eyeIcon.classList.add("fa-eye");
             }
         }
-    </script>
 
-    <script>
         document.getElementById("customerLink").addEventListener("click", function() {
             switchRegistrationType("customer");
         });
@@ -132,41 +110,55 @@
 
         function switchRegistrationType(type) {
             var form = document.querySelector(".kugesamopag-register");
-            var bottomLink = document.querySelector(".bottomLink");
+            var registrationTypeInput = document.getElementById("registrationType");
 
             if (type === "customer") {
-                form.setAttribute("action", "customer-registration.php");
-                bottomLink.innerHTML = '<a href="#" class="linkRP customer">Заказчик</a><div class="verticalLine">|</div><a href="#" class="linkRP master" id="masterLink">Мастер</a>';
+                registrationTypeInput.value = "";  // Если не Мастер, очищаем значение
             } else if (type === "master") {
-                form.setAttribute("action", "master-registration.php");
-                bottomLink.innerHTML = '<a href="#" class="linkRP customer" id="customerLink">Заказчик</a><div class="verticalLine">|</div><a href="#" class="linkRP master">Мастер</a>';
+                registrationTypeInput.value = "is_master";  // Если Мастер, устанавливаем значение "is_master"
             }
-        }
-    </script>
-    
-    <script>
-        document.getElementById("customerLink").addEventListener("click", function() {
-            switchRegistrationType("customer");
-        });
 
-        document.getElementById("masterLink").addEventListener("click", function() {
-            switchRegistrationType("master");
-        });
-
-        function switchRegistrationType(type) {
-            var form = document.querySelector(".kugesamopag-register");
             var bottomLinkCustomer = document.getElementById("customerLink");
             var bottomLinkMaster = document.getElementById("masterLink");
 
             if (type === "customer") {
-                form.setAttribute("action", "customer-registration.php");
                 bottomLinkCustomer.classList.add("selectedCustomer");
                 bottomLinkMaster.classList.remove("selectedMaster");
             } else if (type === "master") {
-                form.setAttribute("action", "master-registration.php");
                 bottomLinkCustomer.classList.remove("selectedCustomer");
                 bottomLinkMaster.classList.add("selectedMaster");
             }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+        // Вызовем функцию для установки значения по умолчанию
+        setDefaultRegistrationType();
+
+        // Добавим обработчик события для кнопки "Заказчик"
+        document.getElementById("customerLink").addEventListener("click", function() {
+            switchRegistrationType("customer");
+        });
+
+        // Добавим обработчик события для кнопки "Мастер"
+        document.getElementById("masterLink").addEventListener("click", function() {
+            switchRegistrationType("master");
+        });
+    });
+
+        // Функция для установки значения по умолчанию при загрузке страницы
+        function setDefaultRegistrationType() {
+            var form = document.querySelector(".kugesamopag-register");
+            var registrationTypeInput = document.getElementById("registrationType");
+
+            // Установим значение по умолчанию на "Заказчик"
+            registrationTypeInput.value = "";
+
+            var bottomLinkCustomer = document.getElementById("customerLink");
+            var bottomLinkMaster = document.getElementById("masterLink");
+
+            // Добавим класс для выделения кнопки "Заказчик"
+            bottomLinkCustomer.classList.add("selectedCustomer");
+            bottomLinkMaster.classList.remove("selectedMaster");
         }
     </script>
 </body>
