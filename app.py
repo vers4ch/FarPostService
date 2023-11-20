@@ -49,17 +49,6 @@ class MasterCard(db.Model):
     address = db.Column(db.Text)
     count_rate = db.Column(db.Integer)
     sum_rate = db.Column(db.Integer)
-
-    # def __init__(self, user_id, service_id, price, about_master, education, experience, address, count_rate, sum_rate):
-    #     self.user_id = user_id
-    #     self.service_id = service_id
-    #     self.price = price
-    #     self.about_master = about_master
-    #     self.education = education
-    #     self.experience = experience
-    #     self.address = address
-    #     self.count_rate = count_rate
-    #     self.sum_rate = sum_rate
         
     def __repr__(self):
         return f"<MasterCard(user_id='{self.user_id}', service_id={self.service_id}, price={self.price}, about_master={self.about_master}, education={self.education}, experience={self.experience}, address={self.address}, count_rate={self.count_rate}, sum_rate={self.sum_rate})>"
@@ -185,33 +174,34 @@ def get_service_subgroups(name_service):
     return {'subgroups': subgroups_list}
 
 
-@app.route('/create_master_card', methods=['GET', 'POST'])
-def create_master_card():
+@app.route('/master_card', methods=['GET', 'POST'])
+def master_cards():
     user = User.query.filter_by(username=session['username']).first()
     cards = MasterCard.query.filter_by(user_id=user.uid).all()
-    # service = ServiceType.query.filter_by(sid=16).first()
     for card in cards:
         print(card.service_id)
         service = ServiceType.query.filter_by(sid=card.service_id).first()
         card.service_id = service.subgroup
         print(card.service_id) 
     
-    return render_template('create_master_card.html', user = user, cards=cards, service = service)
+    return render_template('create_master_card.html', user = user, cards=cards)
 
 @app.route('/new_card', methods=['GET', 'POST'])
 def new_card():
     if request.method == 'POST':
         service_subgroup = request.form['service-subgroup']
+        service = ServiceType.query.filter_by(subgroup=service_subgroup).first()
+        
         about = request.form['about']
         education = request.form['education']
         exp = request.form['exp']
         price = request.form.get('price')
         address = request.form.get('address')
-        new_item = MasterCard(user_id = session['uid'], service_id = 2, price = price, about_master = about, education = education, experience = exp, address = address, count_rate = 0, sum_rate = 0)
+        new_item = MasterCard(user_id = session['uid'], service_id = service.sid, price = price, about_master = about, education = education, experience = exp, address = address, count_rate = 1, sum_rate = 1)
         db.session.add(new_item)
         db.session.commit()
         flash('Карточка успешно создана!', 'success')
-        return create_master_card
+        return redirect(url_for('master_cards'))
     return render_template('new_card.html', user = session)
 
 

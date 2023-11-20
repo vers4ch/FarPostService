@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Система авторизации</title>
+    <title>Создание карточки</title>
     <link rel="stylesheet" href="static/styles/cmc.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
@@ -17,10 +17,10 @@
           </div>
           <div class="center-container">
             {% if user.is_master == True %}
-                <a class="centralLink" href="#">Просмотреть заказы</a>
+                <a class="centralLink" href="home">Главная</a>
             {% endif %}
             {% if user.is_master == False %}
-                <a class="centralLink" href="#">Разместить заказы</a>
+                <a class="centralLink" href="#">Ты что тут забыл?</a>
             {% endif %}
           </div>
           <div class="right-container">
@@ -43,7 +43,7 @@
                 <p class="card-text" style="margin: 0;"><i class="fa fa-star" aria-hidden="true"></i> {{ card.sum_rate/card.count_rate }} <i class="fa fa-commenting" aria-hidden="true"></i> {{ card.count_rate }}</p>
                 
                 <p class="card-text" style="text-decoration: underline; margin-bottom: 0;">Вид услуги:</p>
-                <p class="card-text" style="margin: 0;">{{ service.name_service }}->{{ card.service_id }}</p>
+                <p class="card-text" style="margin: 0;">{{ card.service_id }}</p>
 
                 <p class="card-text" style="text-decoration: underline; margin-bottom: 0;">О себе:</p>
                 <p class="card-text" style="margin: 0;">{{ card.about_master }}</p>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Система авторизации</title>
+    <title>Главная</title>
     <link rel="stylesheet" href="static/styles/home.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
@@ -18,7 +18,7 @@
           </div>
           <div class="center-container">
             {% if user.is_master == True %}
-                <a class="centralLink" href="create_master_card">Просмотреть заказы</a>
+                <a class="centralLink" href="master_card">Просмотреть заказы</a>
             {% endif %}
             {% if user.is_master == False %}
                 <a class="centralLink" href="#">Разместить заказы</a>
@@ -31,28 +31,8 @@
         </div>
       </header>
 
-    <!-- <div class="head">
-        <img src="static/images/fshB.png" height="50%">
-        {% if user.is_master == True %}
-            <a class="centralLink" href="#">Посмотреть заказы</a>
-        {% endif %}
-        {% if user.is_master == False %}
-            <a class="centralLink" href="#">Разместить заказы</a>
-        {% endif %}
-        <div style="margin-inline: 3%;height: 100%;display: flex;align-items: center;"><a class="profileLink" href="{{ url_for('profile') }}"><i class="fa fa-user fa-lg" style="margin-right: 10px;"></i>{{user.last_name}} {{user.first_name | first}}. {{user.patronymic | first}}.</a></div>
-    </div> -->
-
     <img src="static\images\head.jpg" alt="Image description" class="start-image">
 
-    <!-- <div class="searcher">
-        <div class="searcher">
-            <form class="searchForm" method="post" action="/search">
-                <i class="fa fa-search fa-lg"></i>
-                <input type="text" name="search_query" required placeholder="Услуга или специалист">
-                <button type="submit">Поиск</button>
-            </form>
-        </div>
-    </div> -->
     <div class="searcher">
         <form class="searchForm" method="post" action="/search">
             <i class="fa fa-search fa-lg"></i>
