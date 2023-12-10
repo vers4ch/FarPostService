@@ -4,9 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Выкладное меню</title>
+    <link rel="stylesheet" href="../static/styles/ml.css">
 </head>
 <body>
     <h1>Details for {{ name_service or subgroup }}</h1>
-    <!-- Дополнительные детали услуги можно добавить здесь -->
+
+
+    <div class="base">
+        {% for card in cards %}
+            <div class="card mb-3">
+                <div class="card-box">
+                    <h2 class="card-name">{{card.name}}</h2>
+                    <p class="card-text" style="margin: 0;"><i class="fa fa-star" aria-hidden="true"></i> {{ card.sum_rate/card.count_rate }} <i class="fa fa-commenting" aria-hidden="true"></i> {{ card.count_rate }}</p>
+                    
+                    <p class="card-text" style="text-decoration: underline; margin-bottom: 0;">Вид услуги:</p>
+                    <p class="card-text" style="margin: 0;">{{ card.subgroup }}</p>
+
+                    <p class="card-text" style="text-decoration: underline; margin-bottom: 0;">О себе:</p>
+                    <p class="card-text" style="margin: 0;">{{ card.about_master }}</p>
+
+                    <p class="card-text" style="text-decoration: underline; margin-bottom: 0;">Образование:</p>
+                    <p class="card-text" style="margin: 0;">{{ card.education }}</p>
+
+                    <p class="card-text" style="text-decoration: underline; margin-bottom: 0;">Опыт работы:</p>
+                    <p class="card-text" style="margin: 0;">{{ card.experience }} года</p>
+
+                    <p class="card-text" style="text-decoration: underline; margin-bottom: 0;">Оплата:</p>
+                    <p class="card-text" style="margin: 0;">{{ card.price }}</p>
+
+                    <p class="card-text" style="text-decoration: underline; margin-bottom: 0;">Район работы:</p>
+                    <p class="card-text" style="margin: 0;">{{ card.address }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
 </body>
 </html>

@@ -34,13 +34,14 @@ class ServiceType(db.Model):
     subgroup = db.Column(db.Text(collation='pg_catalog."default"'))
 
     def __repr__(self):
-        return f"<ServiceType(name_service='{self.name_service}', subgroup={self.subgroup}, image={self.image})>"
+        return f"<ServiceType(sid='{self.sid}', name_service='{self.name_service}', subgroup={self.subgroup}, image={self.image})>"
 
 class MasterCard(db.Model):
     __tablename__ = 'master_cards'
 
     mc_id = db.Column(db.BigInteger, primary_key=True)
     user_id = db.Column(db.Integer)
+    # user_id = db.Column(db.Text)
     service_id = db.Column(db.Text)
     price = db.Column(db.Text)
     about_master = db.Column(db.Text)
@@ -49,9 +50,11 @@ class MasterCard(db.Model):
     address = db.Column(db.Text)
     count_rate = db.Column(db.Integer)
     sum_rate = db.Column(db.Integer)
+    name = db.Column(db.Text)
+    subgroup = db.Column(db.Text)
         
     def __repr__(self):
-        return f"<MasterCard(user_id='{self.user_id}', service_id={self.service_id}, price={self.price}, about_master={self.about_master}, education={self.education}, experience={self.experience}, address={self.address}, count_rate={self.count_rate}, sum_rate={self.sum_rate})>"
+        return f"<MasterCard(user_id='{self.user_id}', service_id={self.service_id}, price={self.price}, about_master={self.about_master}, education={self.education}, experience={self.experience}, address={self.address}, count_rate={self.count_rate}, sum_rate={self.sum_rate}, name={self.name}, subgroup={self.subgroup})>"
 
 # Создание таблицы в базе данных
 with app.app_context():
@@ -144,15 +147,34 @@ def home():
     # return render_template('home.html', grouped_services=grouped_services)
     return render_template('home.html', user = user, grouped_services=grouped_services)
 
+
+
+
+
+
 @app.route('/service_details/<name_service>')
 def service_details_by_name(name_service):
-    # Здесь вы можете извлечь дополнительные данные для конкретного name_service
-    return render_template('masters_list.html', name_service=name_service)
 
-@app.route('/service_details/<subgroup>')
+    result = ServiceType.query.filter_by(subgroup = name_service).first()
+    cards = MasterCard.query.filter_by(service_id=f'{result.sid}').all()
+    # print(result.sid)
+    # print(cards)
+    for card in cards:
+        user = User.query.filter_by(uid=card.user_id).first()
+        service = ServiceType.query.filter_by(sid=card.service_id).first()
+        card.name = user.username
+        card.subgroup = service.subgroup
+
+    print(cards)
+
+    return render_template('masters_list.html', name_service=name_service, service = result, cards = cards)
+
+
+@app.route('/service_details/<subgroup>', methods=['GET', 'POST'])
 def service_details_by_subgroup(subgroup):
-    # Здесь вы можете извлечь дополнительные данные для конкретного subgroup
-    return render_template('masters_list.html', subgroup=subgroup)
+    service_id = ServiceType.query.filter_by(subgroup=subgroup).all()
+    return render_template('masters_list.html', subgroup=subgroup, service = service_id)
+
 
 @app.route('/service_types')
 def get_service_types():
@@ -229,6 +251,11 @@ def reset_pass():
 def profile():
     return render_template('profile.html', user = session)
 
+
+@app.route('/logout')
+def logout():
+    session.pop('user_id', None)
+    return redirect(url_for('login'))
 
 
 # Запуск приложения

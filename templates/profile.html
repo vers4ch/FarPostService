@@ -10,20 +10,16 @@
 
 </head>
 <body>
-    <!-- <div class="head">
-        <img src="static/images/fshB.png" height="50%">
-            <a class="centralLink" href="#">Посмотреть заказы</a>
-            <a class="centralLink" href="#">Разместить заказы</a>
-        <div style="margin-inline: 3%;height: 100%;display: flex;align-items: center;"><a class="profileLink" href="#"><i class="fa fa-user fa-lg" style="margin-right: 10px;"></i>Иванов И. И.</a></div>
-    </div> -->
     <header id="sticky-header">
         <div class="container">
           <div class="left-container">
-            <img src="static/images/fshB.png" height="50%">
+            <a href="home">
+                <img src="static/images/fshB.png" height="50%">
+            </a>
           </div>
           <div class="center-container">
             {% if user.is_master == True %}
-                <a class="centralLink" href="#">Просмотреть заказы</a>
+                <a class="centralLink" href="master_card">Карточки мастера</a>
             {% endif %}
             {% if user.is_master == False %}
                 <a class="centralLink" href="#">Разместить заказы</a>
@@ -108,28 +104,28 @@
                     <!-- Изменения здесь -->
                     <div class="input-group">
                         <label for="firstName">Имя</label>
-                        <input type="text" id="firstName" placeholder="Иван">
+                        <input type="text" id="firstName" placeholder="{{user.first_name}}">
                     </div>
             
                     <div class="input-group">
                         <label for="lastName">Фамилия</label>
-                        <input type="text" id="lastName" placeholder="Иванов">
+                        <input type="text" id="lastName" placeholder="{{user.last_name}}">
                     </div>
             
                     <div class="input-group">
                         <label for="middleName">Отчество</label>
-                        <input type="text" id="middleName" placeholder="Иванович">
+                        <input type="text" id="middleName" placeholder="{{user.patronymic}}">
                     </div>
             
                     <div class="input-group">
                         <label for="email">Email</label>
-                        <input type="text" id="email" placeholder="ivanov@example.com">
+                        <input type="text" id="email" placeholder="{{user.email}}">
                     </div>
         
                     <div class="footer-column">
                         <h2>Действия с профилем</h2>
                         <p><a href="#" style="color: white;">Удалить</a></p>
-                        <p><a href="#" style="color: white;">Выйти</a></p>
+                        <p><a href="logout" style="color: white;">Выйти</a></p>
                     </div>
                     <!-- Конец изменений -->
                 </div>
