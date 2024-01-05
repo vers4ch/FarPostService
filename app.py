@@ -4,7 +4,7 @@ from sqlalchemy import or_
 import os
 
 db_pass = '0705'
-db_adress = '77.35.5.30'
+db_adress = '192.168.0.112'
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '314'
@@ -165,10 +165,12 @@ def service_details_by_name(name_service):
     for card in cards:
         user = User.query.filter_by(uid=card.user_id).first()
         service = ServiceType.query.filter_by(sid=card.service_id).first()
-        card.name = user.username
+        # card.name = user.username
+        # print(card)
+        card.name = f"{user.last_name} {user.first_name} {user.patronymic}"
         card.subgroup = service.subgroup
 
-    print(cards)
+    # print(cards)
 
     return render_template('masters_list.html', name_service=name_service, service = result, cards = cards)
 
@@ -265,4 +267,4 @@ def logout():
 if __name__ == '__main__':
     os.system("clear")
     # Запуск приложения в режиме отладки
-    app.run(debug=True)
+    app.run(debug=True, port=5005)
